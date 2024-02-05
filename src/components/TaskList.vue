@@ -1,5 +1,9 @@
-<template>
-    <div>
+<template >
+    <div class="task-list-container">
+        <div class="summary">
+            <p>Всего задач: {{ getTaskCount }}</p> 
+            <p>Выполнено: {{ getCompleteTask }}</p>
+        </div> 
         <TaskForm @addTask="addTask"/> 
         <div class="tasks-content">
             <task v-for="(task,index) in Tasks" :task="task" :key="index" @deleteTask="deleteTask">
@@ -11,13 +15,10 @@
                 </template>
                 
             </task>
-        </div>        
+        </div>  
+             
     </div>
-    <div class="summary">
-        <p>Всего задач: {{ getTaskCount }}</p> 
-        <p>Выполнено: {{ getCompleteTask }}</p>
-        
-    </div>
+    
 </template>
 
 <script>
@@ -76,7 +77,10 @@ export default{
 }
 </script>
 
-<style>
+<style lang="scss">
+.task-list-container{
+    position: relative;
+}
 .tasks-content{
     display: flex;
     align-items: center;
@@ -85,12 +89,11 @@ export default{
 }
 .summary{
     position: absolute;
-    right: 0;
+    right: 20px;
     top: 0;
-    padding: 25px;
     border-radius: 15px;
-    background-color: white;
-    margin: 20px;
+    box-shadow: 0 0px 5px rgba($color: #000000, $alpha: 0.20);
+    padding: 15px;
 }
 .summary p:first-child{
     margin-bottom: 10px;
